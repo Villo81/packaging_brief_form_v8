@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NGTVKVHPPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NGTVKVHPPT');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Packaging Sostenibile v9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  const CONFIG = {
+    emailjs: {
+      publicKey:  'cDO_s0gtFXw4M2gAK',
+      serviceId:  'service_evc3pgk',
+      templateId: 'template_zw1t2kd'
+    }
+  };
+  (function() { emailjs.init(CONFIG.emailjs.publicKey); })();
+</script>
+
+<style>
+  :root {
+    --bg: #F5F2ED; --surface: #FFFFFF; --surface-alt: #F9F8F6;
+    --ink: #1A1814; --ink-light: #5A5650; --accent: #2D5A3D; --accent-hover: #1E3D2A;
+    --border: #E0DDD8; --danger: #D32F2F; --radius: 8px;
+  }
+  body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; margin:0; padding-bottom: 4rem; }
+  header { background: var(--ink); color: var(--bg); padding: 3rem 1.5rem; text-align: center; }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin: 0; }
+  main { max-width: 850px; margin: -2rem auto 0; padding: 0 1.5rem; }
+  
+  .step-container { background: var(--surface); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 1.5rem; display: none; }
+  .step-container.active { display: block; }
+  
+  h2.step-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; color: var(--accent); }
+  
+  .form-group { margin-bottom: 1.5rem; }
+  label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 0.5rem; }
+  .hint { display: block; font-size: 12px; color: var(--ink-light); margin-bottom: 0.5rem; line-height: 1.4; font-style: italic; }
+  .instruction { font-size: 0.85rem; color: var(--ink-light); font-style: italic; font-weight: normal; margin-left: 4px; }
+  
+  input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 15px; box-sizing: border-box; }
+  input:focus, select:focus { border-color: var(--accent); outline: none; }
+  
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .option-card { 
+    border: 1px solid var(--border); 
+    padding: 12px; 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    cursor: pointer; 
+    background: white; 
+    font-size: 13.5px; 
+    border-radius: 6px; 
+    transition: all 0.2s ease;
+  }
+  .option-card:hover { border-color: var(--accent); }
+  .option-card input[type="checkbox"] { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
+  
+  .product-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; background: var(--surface-alt); margin-bottom: 1.5rem; position: relative; }
+  .product-header { font-weight: 700; color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+
+  .level-container { margin-top: 15px; padding: 15px; background: #fff; border: 1px dashed #bbb; border-radius: 6px; display: none; }
+  .level-container.active { display: block; }
+  
+  .alert-box { border-left: 4px solid var(--danger); background: #FFF5F5; padding: 15px; margin: 15px 0; display: none; }
+  
+  .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  .btn { padding: 12px 28px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; transition: 0.3s; }
+  .btn-next { background: var(--accent); color: white; }
+  .btn-prev { background: #eee; color: #555; }
+  
+  @media (max-width: 600px) { .grid-2, .options-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Brief Sostenibilità Packaging</h1>
+  <p>Analisi Tecnica e Allineamento Normativo</p>
+</header>
+
+<main>
+  <div class="step-container active" id="step-1">
+    <h2 class="step-title">1. Anagrafica Aziendale</h2>
+    <div class="form-group"><label>Nome Azienda *</label><input type="text" id="azienda" class="required"></div>
+    <div class="grid-2">
+      <div class="form-group"><label>Referente e Ruolo *</label><input type="text" id="referente" class="required"></div>
+      <div class="form-group"><label>Email *</label><input type="email" id="email" class="required"></div>
+    </div>
+    
+    <div class="form-group">
+      <label>Settore * <span class="instruction">(Scelta singola)</span></label>
+      <select id="settore" class="required" onchange="handleSectorChange()">
+        <option value="">Seleziona...</option>
+        <option value="Alimentare">Alimentare / HORECA</option>
+        <option value="Cosmetica">Cosmetica / Pharma</option>
+        <option value="Industria">Meccanica / Industria</option>
+        <option value="E-commerce">E-commerce / Retail</option>
+        <option value="Altro">Altro (specifica)</option>
+      </select>
+    </div>
+
+    <div id="altro-settore-div" class="form-group" style="display:none;">
+      <label>Specificare il settore *</label>
+      <input type="text" id="settore_altro" placeholder="Inserisci il tuo settore...">
+    </div>
+
+    <div class="nav-buttons">
+      <span></span>
+      <button class="btn btn-next" onclick="validateAndNext(1, 2)">Avanti →</button>
+    </div>
+  </div>
+
+  <div class="step-container" id="step-2">
+    <h2 class="step-title">2. Analisi Prodotti e Livelli</h2>
+    <div id="products-list"></div>
+    <button class="btn btn-prev" onclick="addProduct()" style="width:100%; margin: 10px 0; border: 1px dashed #aaa; background: #fff;">+ Aggiungi un altro prodotto</button>
+    <div class="nav-buttons">
+      <button class="btn btn-prev" onclick="prevStep(1)">← Indietro</button>
+      <button class="btn btn-next" onclick="validateAndNext(2, 3)">Avanti →</button>
+    </div>
+  </div>
+
+  <div class="step-container" id="step-3">
+    <h2 class="step-title">3. Volumi e Mercati</h2>
+    
+    <div class="form-group">
+      <label>Volumi totali immessi (stima annua) * <span class="instruction">(Scelta singola)</span></label>
+      <span class="hint">Quantità totale di imballaggi (in peso o pezzi) messi sul mercato ogni anno.</span>
+      <select id="volumi" class="required">
+        <option value="">Seleziona...</option>
+        <option value="Piccoli (< 5 ton)">Piccoli volumi (meno di 5 tonnellate/anno)</option>
+        <option value="Medi (5-50 ton)">Medi volumi (5 - 50 tonnellate/anno)</option>
+        <option value="Grandi (> 50 ton)">Grandi volumi (oltre 50 tonnellate/anno)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>In quali mercati vendi i tuoi prodotti? * <span class="instruction">(Scelta multipla)</span></label>
+      <div class="options-grid" id="mercati-list">
+        <label class="option-card"><input type="checkbox" value="Italia" onchange="checkLabels()"> Italia</label>
+        <label class="option-card"><input type="checkbox" value="Francia" onchange="checkLabels()"> Francia</label>
+        <label class="option-card"><input type="checkbox" value="Spagna" onchange="checkLabels()"> Spagna</label>
+        <label class="option-card"><input type="checkbox" value="Germania"> Germania</label>
+        <label class="option-card"><input type="checkbox" value="Altri mercati UE"> Altri mercati UE</label>
+        <label class="option-card"><input type="checkbox" value="Extra UE"> Extra UE</label>
+      </div>
+    </div>
+
+    <div id="label-section" class="alert-box">
+      <label>⚠️ Focus Etichettatura Ambientale (IT/FR/ES) <span class="instruction">(Scelta singola)</span></label>
+      <span class="hint">Obblighi specifici per indicazioni di smaltimento.</span>
+      <select id="label_status">
+        <option value="Non a norma">Non ho ancora adeguato le etichette</option>
+        <option value="In dubbio">Non sono sicuro della conformità dei loghi inseriti</option>
+        <option value="A norma">Sono certo di essere a norma</option>
+      </select>
+    </div>
+
+    <div id="moca-section" class="alert-box">
+      <label>Sicurezza Alimentare (MOCA) <span class="instruction">(Scelta singola)</span></label>
+      <span class="hint">Uso di barriere funzionali o trattamenti PFAS?</span>
+      <select id="moca_val"><option value="No">No</option><option value="Sì">Sì</option><option value="Non so">Non so</option></select>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-prev" onclick="prevStep(2)">← Indietro</button>
+      <button class="btn btn-next" onclick="validateAndNext(3, 4)">Avanti →</button>
+    </div>
+  </div>
+
+  <div class="step-container" id="step-4">
+    <h2 class="step-title">4. Green Claims e Dichiarazioni</h2>
+    
+    <div class="form-group">
+      <label>Quali dichiarazioni ambientali utilizzi attualmente? <span class="instruction">(Scelta multipla)</span></label>
+      <span class="hint">Seleziona i messaggi o loghi legati alla sostenibilità presenti sul pack o nelle schede tecniche.</span>
+      <div class="options-grid" id="claims-list">
+        <label class="option-card"><input type="checkbox" value="Riciclabile" onchange="toggleClaimsDetails(this)"> 100% Riciclabile</label>
+        <label class="option-card"><input type="checkbox" value="Compostabile" onchange="toggleClaimsDetails(this)"> Biodegradabile / Compostabile</label>
+        <label class="option-card"><input type="checkbox" value="Contenuto Riciclato" onchange="toggleClaimsDetails(this)"> Prodotto con plastica riciclata (PCR/PIR)</label>
+        <label class="option-card"><input type="checkbox" value="Carbon Neutral" onchange="toggleClaimsDetails(this)"> Carbon Neutral / Zero Emissioni</label>
+        <label class="option-card"><input type="checkbox" value="Sostenibile" onchange="toggleClaimsDetails(this)"> "Green" / "Sostenibile" / "Ecologico"</label>
+        <label class="option-card"><input type="checkbox" value="Altro" onchange="toggleAltroClaim(this); toggleClaimsDetails(this)"> Altro (specifica)</label>
+        <label class="option-card" style="grid-column: 1 / -1; background: #f0f0f0;">
+          <input type="checkbox" value="Nessun claim" id="no-claim" onchange="handleNoClaim(this)"> Nessuna dichiarazione ambientale
+        </label>
+      </div>
+      <div id="altro-claim-div" class="form-group" style="display:none; margin-top: 10px;">
+        <input type="text" id="claim_altro" placeholder="Specifica l'asserzione utilizzata...">
+      </div>
+    </div>
+
+    <div id="claims-evidence-section" class="alert-box" style="border-left-color: var(--accent); background: #f9fbf9;">
+      <label>Documentazione a supporto (Compliance Green Claims) *</label>
+      <span class="hint">La nuova direttiva UE 2024/825 richiede prove scientifiche per ogni claim.</span>
+      <select id="evidenza_claims" class="required">
+        <option value="">Seleziona...</option>
+        <option value="LCA">Abbiamo analisi LCA (Life Cycle Assessment) aggiornate</option>
+        <option value="Certificazioni Terze">Abbiamo certificazioni di enti terzi (es. ISCC+, RecyClass, OK Compost)</option>
+        <option value="Dichiarazioni Fornitore">Ci basiamo solo su dichiarazioni dei fornitori di materia prima</option>
+        <option value="Nessuna">Al momento non abbiamo documentazione ufficiale a supporto</option>
+      </select>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-prev" onclick="prevStep(3)">← Indietro</button>
+      <button class="btn btn-next" onclick="validateAndNext(4, 5)">Avanti →</button>
+    </div>
+  </div>
+
+  <div class="step-container" id="step-5">
+    <h2 class="step-title">5. Obiettivi e Criticità</h2>
+    <div class="form-group">
+      <label>Conoscenza Normative (PPWR / Green Claims) <span class="instruction">(Scelta singola)</span></label>
+      <select id="conoscenza_norme">
+        <option value="Nulla">Nessuna conoscenza specifica</option>
+        <option value="Informato superficialmente">Informato superficialmente</option>
+        <option value="Aggiornato">Aggiornato sulle scadenze 2026</option>
+        <option value="Esperto">Team interno dedicato alla compliance</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Ambizione Sostenibilità * <span class="instruction">(Scelta singola)</span></label>
+      <select id="ambizione" class="required">
+        <option value="">Seleziona...</option>
+        <option value="Compliance">Allineamento minimo normativo</option>
+        <option value="Oltre">Percorso distintivo oltre la compliance</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Problemi principali riscontrati * <span class="instruction">(Scelta multipla)</span></label>
+      <div class="options-grid" id="problemi-list">
+        <label class="option-card"><input type="checkbox" value="Costi"> Costi elevati</label>
+        <label class="option-card"><input type="checkbox" value="Stoccaggio"> Spazio magazzino</label>
+        <label class="option-card"><input type="checkbox" value="Danni"> Danni trasporto</label>
+        <label class="option-card"><input type="checkbox" value="Mercato"> Segnalazioni clienti</label>
+        <label class="option-card"><input type="checkbox" value="Tempo"> Tempi ciclo lunghi</label>
+        <label class="option-card"><input type="checkbox" value="Regolatorio e normative"> Regolatorio e normative</label>
+        <label class="option-card"><input type="checkbox" value="Altro" onchange="toggleAltroProblema(this)"> Altro</label>
+      </div>
+      <div id="altro-problema-div" class="form-group" style="display:none; margin-top: 10px;">
+        <input type="text" id="problema_altro" placeholder="Specifica altro problema riscontrato...">
+      </div>
+    </div>
+    
+    <div class="form-group"><label>Note (Facoltativo)</label><textarea id="note" rows="3"></textarea></div>
+    <div class="nav-buttons">
+      <button class="btn btn-prev" onclick="prevStep(4)">← Indietro</button>
+      <button class="btn btn-next" onclick="sendFinalBrief()" id="btn-submit" style="background:var(--ink);">Invia Analisi Finale →</button>
+    </div>
+  </div>
+
+  <div class="step-container" id="step-thanks" style="text-align:center;">
+    <h2 class="step-title">Analisi Ricevuta</h2>
+    <p>Ti contatteremo a breve con il feedback tecnico richiesto.</p>
+  </div>
+</main>
+
+<script>
+  let prodCount = 0;
+  const materialsList = [
+    {v: "Carta", l: "Carta / Cartone"},
+    {v: "Plastica Rigida", l: "Plastica Rigida (PET/PE/PS/altro)"},
+    {v: "Plastica Flessibile", l: "Plastica Flessibile (xPE/PS/PVC/altro)"},
+    {v: "Vetro", l: "Vetro"},
+    {v: "Metallo", l: "Metallo (Alluminio/Acciaio)"},
+    {v: "Legno", l: "Legno"}
+  ];
+
+  function handleSectorChange() {
+    const s = document.getElementById('settore').value;
+    const altroDiv = document.getElementById('altro-settore-div');
+    const altroInput = document.getElementById('settore_altro');
+    altroDiv.style.display = (s === 'Altro') ? 'block' : 'none';
+    if(s !== 'Altro') altroInput.value = "";
+    document.getElementById('moca-section').style.display = (s === 'Alimentare') ? 'block' : 'none';
+  }
+
+  function addProduct() {
+    if (prodCount >= 5) return;
+    prodCount++;
+    const div = document.createElement('div');
+    div.className = 'product-card';
+    div.id = `pw-${prodCount}`;
+    div.innerHTML = `
+      <div class="product-header">PRODOTTO #${prodCount}</div>
+      <div class="form-group">
+        <label>Nome Prodotto *</label>
+        <input type="text" class="p-name required" placeholder="Es. Bottiglia Vino">
+      </div>
+      <div class="form-group">
+        <label>Livelli presenti: <span class="instruction">(Scelta multipla)</span></label>
+        <div class="options-grid">
+          <label class="option-card"><input type="checkbox" onchange="toggleL(this,${prodCount},'pri')"> <div><strong>Primario</strong><br><small>(Direttamente a contatto)</small></div></label>
+          <label class="option-card"><input type="checkbox" onchange="toggleL(this,${prodCount},'sec')"> <div><strong>Secondario</strong><br><small>(Unità di vendita/scatola)</small></div></label>
+          <label class="option-card" style="grid-column: 1 / -1;"><input type="checkbox" onchange="toggleL(this,${prodCount},'ter')"> <div><strong>Terziario</strong><br><small>(Trasporto/Pallet)</small></div></label>
+        </div>
+      </div>
+      ${['pri','sec','ter'].map(l => {
+        let nomeLiv = l === 'pri' ? 'PRIMARIO' : l === 'sec' ? 'SECONDARIO' : 'TERZIARIO';
+        return `
+        <div id="l-${prodCount}-${l}" class="level-container">
+          <label style="color: var(--accent); margin-bottom: 8px;">Materiali Imballaggio ${nomeLiv}: <span class="instruction">(Scelta multipla)</span></label>
+          <div class="options-grid">${materialsList.map(m => `<label class="option-card"><input type="checkbox" class="m-${prodCount}-${l}" value="${m.v}"> ${m.l}</label>`).join('')}</div>
+          <label style="margin-top:15px;">Com'è la separabilità dei componenti (${nomeLiv})? <span class="instruction">(Scelta singola)</span></label>
+          <select class="s-${prodCount}-${l}">
+            <option value="Monomateriale">Materiale unico (Monomateriale)</option>
+            <option value="Facilmente separabili a mano">Componenti diversi separabili facilmente a mano</option>
+            <option value="Incollati o termosaldati">Componenti incollati o termosaldati</option>
+            <option value="Richiede attrezzi">Separabile con difficoltà (richiede attrezzi)</option>
+          </select>
+        </div>`
+      }).join('')}
+    `;
+    document.getElementById('products-list').appendChild(div);
+  }
+
+  function toggleL(cb, id, type) { document.getElementById(`l-${id}-${type}`).classList.toggle('active', cb.checked); }
+
+  // Gestione Green Claims
+  function toggleAltroClaim(cb) {
+    document.getElementById('altro-claim-div').style.display = cb.checked ? 'block' : 'none';
+  }
+
+  function handleNoClaim(cb) {
+    const list = document.querySelectorAll('#claims-list input:not(#no-claim)');
+    if(cb.checked) {
+      list.forEach(i => { i.checked = false; i.disabled = true; });
+      document.getElementById('altro-claim-div').style.display = 'none';
+    } else {
+      list.forEach(i => i.disabled = false);
+    }
+    toggleClaimsDetails();
+  }
+
+  function toggleClaimsDetails() {
+    const selected = document.querySelectorAll('#claims-list input:checked:not(#no-claim)');
+    const evidenceBox = document.getElementById('claims-evidence-section');
+    evidenceBox.style.display = selected.length > 0 ? 'block' : 'none';
+    
+    const evidenceSelect = document.getElementById('evidenza_claims');
+    if (selected.length === 0) {
+      evidenceSelect.classList.remove('required');
+      evidenceSelect.value = "";
+    } else {
+      evidenceSelect.classList.add('required');
+    }
+  }
+
+  function toggleAltroProblema(cb) {
+    document.getElementById('altro-problema-div').style.display = cb.checked ? 'block' : 'none';
+  }
+
+  function validateAndNext(current, next) {
+    const step = document.getElementById(`step-${current}`);
+    const inputs = step.querySelectorAll('.required');
+    let valid = true;
+
+    inputs.forEach(i => {
+      // Validazione solo se l'elemento è visibile
+      if (i.offsetParent !== null && !i.value) { 
+        i.style.borderColor = 'red'; valid = false; 
+      } else { 
+        i.style.borderColor = '#E0DDD8'; 
+      }
+    });
+
+    if (current === 1 && document.getElementById('settore').value === 'Altro') {
+      const altroInp = document.getElementById('settore_altro');
+      if(!altroInp.value) { altroInp.style.borderColor = 'red'; valid = false; }
+    }
+
+    if (current === 3 && document.querySelectorAll('#mercati-list input:checked').length === 0) { alert("Seleziona almeno un mercato."); return; }
+    
+    if (current === 4 && document.querySelectorAll('#claims-list input:checked').length === 0) { alert("Seleziona almeno un'opzione per i Green Claims."); return; }
+
+    if (!valid) { alert("Compila tutti i campi obbligatori (*)"); return; }
+    
+    document.querySelectorAll('.step-container').forEach(s => s.classList.remove('active'));
+    document.getElementById(`step-${next}`).classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  function prevStep(s) {
+    document.querySelectorAll('.step-container').forEach(sc => sc.classList.remove('active'));
+    document.getElementById(`step-${s}`).classList.add('active');
+  }
+
+  function checkLabels() {
+    const list = Array.from(document.querySelectorAll('#mercati-list input:checked')).map(i => i.value);
+    const critical = ["Italia", "Francia", "Spagna"];
+    document.getElementById('label-section').style.display = list.some(m => critical.includes(m)) ? 'block' : 'none';
+  }
+
+  async function sendFinalBrief() {
+    const btn = document.getElementById('btn-submit');
+    if(document.querySelectorAll('#problemi-list input:checked').length === 0) { alert("Indica almeno un problema."); return; }
+
+    btn.disabled = true; btn.textContent = "Invio...";
+
+    let prodInfo = "";
+    document.querySelectorAll('.product-card').forEach((pc, idx) => {
+      const id = idx + 1;
+      prodInfo += `\n📦 PRODOTTO ${id}: ${pc.querySelector('.p-name').value}\n`;
+      ['pri','sec','ter'].forEach(l => {
+        if(document.getElementById(`l-${id}-${l}`).classList.contains('active')) {
+          const mats = Array.from(document.querySelectorAll(`.m-${id}-${l}:checked`)).map(m => m.value).join(', ');
+          const sep = pc.querySelector(`.s-${id}-${l}`).value;
+          prodInfo += `  - ${l.toUpperCase()}: ${mats} | Separabilità: ${sep}\n`;
+        }
+      });
+    });
+
+    const settoreFinale = document.getElementById('settore').value === 'Altro' ? 
+                          "Altro: " + document.getElementById('settore_altro').value : 
+                          document.getElementById('settore').value;
+
+    let claimsSel = Array.from(document.querySelectorAll('#claims-list input:checked')).map(i => i.value);
+    const evidenza = document.getElementById('evidenza_claims').value;
+
+    const payload = {
+      azienda: document.getElementById('azienda').value,
+      referente: document.getElementById('referente').value,
+      email_cliente: document.getElementById('email').value,
+      settore: settoreFinale,
+      messaggio: `
+DETTAGLIO AZIENDA:
+- Settore: ${settoreFinale}
+- Volumi: ${document.getElementById('volumi').value}
+- Mercati: ${Array.from(document.querySelectorAll('#mercati-list input:checked')).map(i => i.value).join(', ')}
+- Etichettatura (IT/FR/ES): ${document.getElementById('label_status').value || 'N/A'}
+
+GREEN CLAIMS:
+- Claims attivi: ${claimsSel.join(', ')}
+- Documentazione/LCA: ${evidenza || 'Nessuna dichiarazione attiva'}
+
+STRATEGIA:
+- Conoscenza Norme: ${document.getElementById('conoscenza_norme').value}
+- Ambizione: ${document.getElementById('ambizione').value}
+- Problemi principali: ${Array.from(document.querySelectorAll('#problemi-list input:checked')).map(i => i.value).join(', ')}
+- Note: ${document.getElementById('note').value}
+
+PRODOTTI:
+${prodInfo}`
+    };
+
+    try {
+      await emailjs.send(CONFIG.emailjs.serviceId, CONFIG.emailjs.templateId, payload);
+      document.querySelectorAll('.step-container').forEach(s => s.classList.remove('active'));
+      document.getElementById('step-thanks').style.display = 'block';
+    } catch (e) { alert("Errore invio email."); btn.disabled = false; }
+  }
+
+  addProduct();
+</script>
+</body>
+</html>
